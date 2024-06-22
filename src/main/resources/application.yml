@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: questionnaire
+  datasource:
+    url: jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8081
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: github.nowsoar.questionnaire.mybatis.entity
+  config_location: classpath:mybatis-config.xml
