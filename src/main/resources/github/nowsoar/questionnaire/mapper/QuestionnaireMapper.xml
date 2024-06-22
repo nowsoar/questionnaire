@@ -7,4 +7,14 @@
     <select id="findAllByUsername" resultType="Questionnaire">
         select * from questionnaire where username = #{username}
     </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="questionnaireId" keyColumn="questionnaire_id" parameterType="Questionnaire">
+        insert into questionnaire
+        (create_time, description, status, title, username)
+        values(#{createTime}, #{description}, #{status}, #{title}, #{username})
+    </insert>
+
+    <select id="findByQuestionnaireId" resultType="Questionnaire">
+        select * from questionnaire where questionnaire_id = #{questionnaireId}
+    </select>
 </mapper>
