@@ -6,11 +6,19 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    user:
+      password: 123
 
 server:
   port: 8081
 
 mybatis:
-  mapper-locations: classpath:mappers/*.xml
-  type-aliases-package: github.nowsoar.questionnaire.mybatis.entity
-  config_location: classpath:mybatis-config.xml
+  mapper-locations: classpath:github/nowsoar/questionnaire/mapper/*.xml
+  type-aliases-package: github/nowsoar/questionnaire/entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+logging:
+  level:
+    github.nowsoar.questionnaire.mapper: debug
