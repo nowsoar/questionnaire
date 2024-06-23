@@ -17,4 +17,10 @@
     <select id="findByQuestionnaireId" resultType="Questionnaire">
         select * from questionnaire where questionnaire_id = #{questionnaireId}
     </select>
+
+    <update id="update" parameterType="Questionnaire">
+        update questionnaire set
+        description = #{description}, title = #{title}
+        where questionnaire_id = #{questionnaireId}
+    </update>
 </mapper>

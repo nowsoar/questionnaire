@@ -20,4 +20,6 @@ public interface QuestionnaireMapper {
     void insert(Questionnaire questionnaire);
 
     Questionnaire findByQuestionnaireId(Integer questionnaireId);
+
+    void update(Questionnaire questionnaire);
 }

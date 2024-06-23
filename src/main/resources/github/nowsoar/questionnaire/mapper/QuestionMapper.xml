@@ -7,4 +7,10 @@
     <select id="findAllByQuestionnaireId" resultType="Question">
         select * from question where questionnaire_id = #{questionnaireId}
     </select>
+
+    <insert id="insert" parameterType="Question">
+        insert into question
+        (question_id, details, question_description, question_nullable, question_title, question_type, questionnaire_id)
+        values(#{questionId}, #{details}, #{questionDescription}, #{questionNullable}, #{questionTitle}, #{questionType}, #{questionnaireId})
+    </insert>
 </mapper>

@@ -16,4 +16,6 @@ import java.util.List;
 public interface QuestionMapper {
 
     List<Question> findAllByQuestionnaireId(Integer questionnaireId);
+
+    void insert(Question question);
 }

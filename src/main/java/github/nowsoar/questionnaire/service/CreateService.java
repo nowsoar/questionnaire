@@ -12,4 +12,10 @@ public interface CreateService {
     public String getQuestionList(Integer questionnaireId);
 
     public String getQuestionnaireOutline(Integer questionnaireId);
+
+    public String saveOneQuestion(String question, Integer questionnaireId);
+
+    public String saveQuestionnaire(String questionnaire, String questionList);
+
+    public String saveQuestionnaireOutline(String questionnaire);
 }

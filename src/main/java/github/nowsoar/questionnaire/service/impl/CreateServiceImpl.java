@@ -2,6 +2,7 @@ package github.nowsoar.questionnaire.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import github.nowsoar.questionnaire.entity.Question;
 import github.nowsoar.questionnaire.entity.Questionnaire;
@@ -30,6 +31,8 @@ public class CreateServiceImpl implements CreateService {
     private QuestionMapper questionMapper;
 
     private Gson gson = new Gson();
+
+    private final Integer questionIdDigit = 1000;
 
     @Override
     public String createQuestionnaire(String username) {
@@ -74,6 +77,36 @@ public class CreateServiceImpl implements CreateService {
         return gson.toJson(res);
     }
 
+    @Override
+    public String saveOneQuestion(String question, Integer questionnaireId) {
+        JsonObject temp = gson.fromJson(question, JsonObject.class);
+        saveOneQuestion(temp, questionnaireId);
+        return null;
+    }
+
+    @Override
+    public String saveQuestionnaire(String questionnaire, String questionList) {
+        JsonObject questionnaireObj = gson.fromJson(questionnaire, JsonObject.class);
+        JsonArray questionListArray = gson.fromJson(questionList, JsonArray.class);
+        int questionnaireId = questionnaireObj.get("questionnaireId").getAsInt();
+        saveQuestionnaireOutline(questionnaire);
+        for (JsonElement questionJson : questionListArray) {
+            JsonObject temp = questionJson.getAsJsonObject();
+            saveOneQuestion(temp, questionnaireId);
+        }
+        return null;
+    }
+
+    @Override
+    public String saveQuestionnaireOutline(String questionnaire) {
+        JsonObject questionnaireObj = gson.fromJson(questionnaire, JsonObject.class);
+        Questionnaire questionnaireDB = questionnaireMapper.findByQuestionnaireId(questionnaireObj.get("questionnaireId").getAsInt());
+        questionnaireDB.setDescription(questionnaireObj.get("questionnaireDescription").getAsString());
+        questionnaireDB.setTitle(questionnaireObj.get("questionnaireTitle").getAsString());
+        questionnaireMapper.update(questionnaireDB);
+        return null;
+    }
+
     private void processDetails(JsonObject oneRes, JsonObject temp) {
         if (temp != null) {
             oneRes.add("questionOptions", temp.get("questionOptions").getAsJsonArray());//add可以添加JsonObject，JsonArray等；addProperty用来添加普通属性
@@ -85,5 +118,19 @@ public class CreateServiceImpl implements CreateService {
             oneRes.addProperty("date", temp.get("date").getAsString());
             oneRes.addProperty("textDescription", temp.get("textDescription").getAsString());
         }
+    }
+
+    private void saveOneQuestion(JsonObject temp, Integer questionnaireId) {
+        Question question = new Question();
+        question.setQuestionnaireId(questionnaireId);
+        question.setQuestionDescription(temp.get("questionDescription").getAsString());
+        question.setQuestionTitle(temp.get("questionTitle").getAsString());
+        question.setQuestionId(questionnaireId*questionIdDigit + temp.get("questionIndex").getAsInt());
+        question.setQuestionType(temp.get("questionType").getAsString());
+        question.setQuestionNullable(temp.get("questionNullable").getAsBoolean());
+        JsonObject otherJson = new JsonObject();
+        processDetails(otherJson, temp);
+        question.setDetails(otherJson.toString());
+        questionMapper.insert(question);
     }
 }
