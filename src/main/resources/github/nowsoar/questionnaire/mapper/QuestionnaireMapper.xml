@@ -23,4 +23,10 @@
         description = #{description}, title = #{title}
         where questionnaire_id = #{questionnaireId}
     </update>
+
+    <update id="save" parameterType="Questionnaire">
+        update questionnaire set
+        description = #{description}, title = #{title}, status = #{status}, fill_count = #{fillCount}
+        where questionnaire_id = #{questionnaireId}
+    </update>
 </mapper>

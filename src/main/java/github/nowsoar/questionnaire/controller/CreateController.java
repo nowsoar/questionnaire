@@ -57,4 +57,10 @@ public class CreateController {
         String questionnaire = jsonObject.get("questionnaire").toString();
         return createService.saveQuestionnaire(questionnaire, questionList);
     }
+
+    //发布问卷
+    @PostMapping("/releaseQuestionnaire")
+    public String releaseQuestionnaire(@Param("questionnaireId") Integer questionnaireId) {
+        return createService.releaseQuestionnaire(questionnaireId);
+    }
 }

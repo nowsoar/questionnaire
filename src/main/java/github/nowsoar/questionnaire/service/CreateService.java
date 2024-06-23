@@ -18,4 +18,6 @@ public interface CreateService {
     public String saveQuestionnaire(String questionnaire, String questionList);
 
     public String saveQuestionnaireOutline(String questionnaire);
+
+    public String releaseQuestionnaire(Integer questionnaireId);
 }
