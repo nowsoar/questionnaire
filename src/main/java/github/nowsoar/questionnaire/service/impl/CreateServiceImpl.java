@@ -116,6 +116,18 @@ public class CreateServiceImpl implements CreateService {
         return null;
     }
 
+    @Override
+    public String deleteQuestionnaire(Integer questionnaireId) {
+        try {
+            questionnaireMapper.deleteByQuestionnaireId(questionnaireId);
+            questionMapper.deleteByQuestionnaireId(questionnaireId);
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "fail";
+        }
+    }
+
     private void processDetails(JsonObject oneRes, JsonObject temp) {
         if (temp != null) {
             oneRes.add("questionOptions", temp.get("questionOptions").getAsJsonArray());//add可以添加JsonObject，JsonArray等；addProperty用来添加普通属性

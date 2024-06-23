@@ -18,4 +18,6 @@ public interface QuestionMapper {
     List<Question> findAllByQuestionnaireId(Integer questionnaireId);
 
     void insert(Question question);
+
+    void deleteByQuestionnaireId(Integer questionnaireId);
 }

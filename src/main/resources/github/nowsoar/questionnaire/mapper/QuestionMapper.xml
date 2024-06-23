@@ -13,4 +13,8 @@
         (question_id, details, question_description, question_nullable, question_title, question_type, questionnaire_id)
         values(#{questionId}, #{details}, #{questionDescription}, #{questionNullable}, #{questionTitle}, #{questionType}, #{questionnaireId})
     </insert>
+
+    <delete id="deleteByQuestionnaireId">
+        delete from question where questionnaire_id = #{questionnaireId}
+    </delete>
 </mapper>

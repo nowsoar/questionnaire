@@ -63,4 +63,9 @@ public class CreateController {
     public String releaseQuestionnaire(@Param("questionnaireId") Integer questionnaireId) {
         return createService.releaseQuestionnaire(questionnaireId);
     }
+
+    @GetMapping("/deleteQuestionnaire")
+    public String deleteQuestionnaire(@Param("questionnaireId") Integer questionnaireId) {
+        return createService.deleteQuestionnaire(questionnaireId);
+    }
 }

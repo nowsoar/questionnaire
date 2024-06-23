@@ -29,4 +29,8 @@
         description = #{description}, title = #{title}, status = #{status}, fill_count = #{fillCount}
         where questionnaire_id = #{questionnaireId}
     </update>
+
+    <delete id="deleteByQuestionnaireId">
+        delete from questionnaire where questionnaire_id = #{questionnaireId}
+    </delete>
 </mapper>
