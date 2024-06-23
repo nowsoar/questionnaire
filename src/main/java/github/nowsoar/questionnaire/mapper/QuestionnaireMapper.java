@@ -24,4 +24,6 @@ public interface QuestionnaireMapper {
     void update(Questionnaire questionnaire);
 
     void save(Questionnaire questionnaire);
+
+    void deleteByQuestionnaireId(Integer questionnaireId);
 }
