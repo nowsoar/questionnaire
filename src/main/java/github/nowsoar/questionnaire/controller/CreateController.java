@@ -64,8 +64,15 @@ public class CreateController {
         return createService.releaseQuestionnaire(questionnaireId);
     }
 
+    //删除问卷
     @GetMapping("/deleteQuestionnaire")
     public String deleteQuestionnaire(@Param("questionnaireId") Integer questionnaireId) {
         return createService.deleteQuestionnaire(questionnaireId);
+    }
+
+    //关停问卷
+    @PostMapping("/closeQuestionnaire")
+    public String closeQuestionnaire(@Param("questionnaireId") Integer questionnaireId) {
+        return createService.closeQuestionnaire(questionnaireId);
     }
 }

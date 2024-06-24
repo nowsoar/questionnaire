@@ -22,4 +22,6 @@ public interface CreateService {
     public String releaseQuestionnaire(Integer questionnaireId);
 
     public String deleteQuestionnaire(Integer questionnaireId);
+
+    public String closeQuestionnaire(Integer questionnaireId);
 }

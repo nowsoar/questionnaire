@@ -128,6 +128,14 @@ public class CreateServiceImpl implements CreateService {
         }
     }
 
+    @Override
+    public String closeQuestionnaire(Integer questionnaireId) {
+        Questionnaire questionnaire = questionnaireMapper.findByQuestionnaireId(questionnaireId);
+        questionnaire.setStatus("closed");
+        questionnaireMapper.save(questionnaire);
+        return null;
+    }
+
     private void processDetails(JsonObject oneRes, JsonObject temp) {
         if (temp != null) {
             oneRes.add("questionOptions", temp.get("questionOptions").getAsJsonArray());//add可以添加JsonObject，JsonArray等；addProperty用来添加普通属性
