@@ -8,4 +8,10 @@
         select count(*) from questionnaire_ip
         where questionnaire_id = #{questionnaireId} and ip = #{ip}
     </select>
+
+    <insert id="insert" parameterType="QuestionnaireIp">
+        insert into questionnaire_ip
+        (ip, questionnaire_id)
+        values(#{ip}, #{questionnaireId})
+    </insert>
 </mapper>

@@ -1,5 +1,6 @@
 package github.nowsoar.questionnaire.mapper;
 
+import github.nowsoar.questionnaire.entity.QuestionnaireIp;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface QuestionnaireIpMapper {
 
     Integer findByQuestionnaireIdAndIp(Integer questionnaireId, String ip);
+
+    void insert(QuestionnaireIp questionnaireIp);
 }
