@@ -17,4 +17,9 @@
     <delete id="deleteByQuestionnaireId">
         delete from question where questionnaire_id = #{questionnaireId}
     </delete>
+
+    <select id="findByQuestionId" resultType="Question">
+        select * from question where question_id = #{questionId}
+    </select>
+
 </mapper>

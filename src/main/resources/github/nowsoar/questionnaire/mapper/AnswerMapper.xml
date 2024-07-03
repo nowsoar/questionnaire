@@ -9,4 +9,8 @@
         (fill_time, ip, question_id, question_title, question_type, write_value)
         values(#{fillTime}, #{ip}, #{questionId}, #{questionTitle}, #{questionType}, #{writeValue})
     </insert>
+
+    <select id="findByQuestionId" resultType="Answer">
+        select * from answer where question_id = #{questionId}
+    </select>
 </mapper>

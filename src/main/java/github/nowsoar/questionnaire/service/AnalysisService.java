@@ -8,4 +8,8 @@ package github.nowsoar.questionnaire.service;
 public interface AnalysisService {
 
     public String getQuestionnairesByUsername(String username);
+
+    public String getQuestionValueList(Integer questionId);
+
+    public String getWriteValue(Integer questionId);
 }

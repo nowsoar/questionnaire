@@ -20,4 +20,6 @@ public interface QuestionMapper {
     void insert(Question question);
 
     void deleteByQuestionnaireId(Integer questionnaireId);
+
+    Question findByQuestionId(Integer questionId);
 }

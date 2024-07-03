@@ -77,17 +77,17 @@ public class FillInServiceImpl implements FillInService {
             if ("single_check".equals(questionType)) {
                 answer.setWriteValue(oneAnswerObj.get("answerSingleCheck").getAsString());
             } else if ("multi_check".equals(questionType)) {
-                answer.setWriteValue(oneAnswerObj.get("answerMultiCheck").getAsString());
+                answer.setWriteValue(oneAnswerObj.get("answerMultiCheck").toString());
             } else if ("single_line_text".equals(questionType)) {
                 answer.setWriteValue(oneAnswerObj.get("answerText").getAsString());
             } else if ("multi_line_text".equals(questionType)) {
                 answer.setWriteValue(oneAnswerObj.get("answerText").getAsString());
             } else if ("number".equals(questionType)) {
-                answer.setWriteValue(oneAnswerObj.get("answerNumber").getAsString());
+                answer.setWriteValue(oneAnswerObj.get("answerNumber").toString());
             } else if ("grade".equals(questionType)) {
-                answer.setWriteValue(oneAnswerObj.get("answerGrade").getAsString());
+                answer.setWriteValue(oneAnswerObj.get("answerGrade").toString());
             } else if ("date".equals(questionType)) {
-                answer.setWriteValue(oneAnswerObj.get("answerDate").getAsString());
+                answer.setWriteValue(oneAnswerObj.get("answerDate").toString());
             }
             answerMapper.insert(answer);
         }
